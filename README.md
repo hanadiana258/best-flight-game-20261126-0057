@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/best-flight-game-20261126-0057/hanadiana258/best-flight-game-20261126-0057/rank.svg)](https://make.fun/bounty/best-flight-game-20261126-0057/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=best-flight-game-20261126-0057)
 [![reward](https://make.fun/badge/best-flight-game-20261126-0057/hanadiana258/best-flight-game-20261126-0057/reward.svg)](https://make.fun/bounty/best-flight-game-20261126-0057?utm_source=github&utm_medium=readme&utm_campaign=best-flight-game-20261126-0057)
 
-Azure Run is an original static browser flight game over a stylized coastal island. Fly through three luminous gates, manage throttle and fuel, switch from chase view to a living cockpit, then flare for a runway landing.
+EMBERFLIGHT: SUNFALL ARCHIPELAGO is an original static browser flight game over a glowing island sea. Fly through three luminous gates, manage throttle and fuel, switch from chase view to a living cockpit, then flare for a runway landing at sunset.
 
 ## Run it
 
