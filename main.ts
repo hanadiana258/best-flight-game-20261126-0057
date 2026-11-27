@@ -1,17 +1,10 @@
-import { mkdir, readdir, writeFile } from 'node:fs/promises';
-import { join, relative } from 'node:path';
-
-const root = process.cwd();
-const out = process.env.MAKEFUN_OUTPUT_DIR || '/output';
-const files = [];
-async function collect(dir) {
-  for (const entry of await readdir(dir, { withFileTypes: true })) {
-    const path = join(dir, entry.name);
-    if (entry.isDirectory() && entry.name !== '.git' && entry.name !== 'out') await collect(path);
-    else if (entry.isFile()) files.push(relative(root, path));
-  }
-}
-await collect(root);
-await mkdir(out, { recursive: true });
-await writeFile(join(out, 'dossier.json'), JSON.stringify({ name: 'EMBERFLIGHT — Sunfall Archipelago', files: files.sort(), builtAt: new Date().toISOString() }, null, 2));
-console.log(`wrote ${files.length} files`);
+import { cp, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import { buildDossier } from './vendor/makefun-game.ts';
+const out=process.env.MAKEFUN_OUTPUT_DIR||'/output';
+await mkdir(out,{recursive:true});
+await cp(new URL('./game/',import.meta.url),join(out,'game'),{recursive:true});
+await cp(new URL('./screenshots/',import.meta.url),join(out,'screenshots'),{recursive:true});
+const dossier=buildDossier(out,{text_max_bytes:163840,screenshots:{max:4,max_bytes:262144},game_max_files:993,game_max_bytes:50331648,game_path_max_bytes:1000});
+await writeFile(join(out,'dossier.json'),dossier);
+console.log(`wrote dossier.json (${Buffer.byteLength(dossier)} bytes)`);
